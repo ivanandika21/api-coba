@@ -1,5 +1,6 @@
 from flask import Flask, request
 import psycopg2
+import json
 
 app = Flask(__name__)
 
@@ -33,7 +34,7 @@ def read():
     cur.execute("SELECT * FROM my_table")
     data = cur.fetchall()
 
-    return json.dumps(data)
+    return data
 
 # Fungsi untuk memperbarui data
 @app.route('/api/v1/update', methods=['PUT'])
